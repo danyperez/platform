@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-07-2022 a las 11:35:43
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.11
+-- Tiempo de generación: 15-07-2022 a las 18:09:29
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -20,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `e4cc_patform`
 --
+CREATE DATABASE IF NOT EXISTS `e4cc_patform` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `e4cc_patform`;
 
 DELIMITER $$
 --
@@ -32,7 +35,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_usu_usuarios` (IN `in_usu_id` IN
 			FROM usu_usuarios u
 			INNER JOIN rol_roles r ON r.rol_id = u.usu_rol_id;
 		WHEN "I" THEN
-			INSERT INTO usu_usuarios(usu_id, usu_nombre, usu_apellido, usu_email, usu_password, usu_estado, usu_rol)
+			INSERT INTO usu_usuarios(usu_id, usu_nombre, usu_apellido, usu_email, usu_password, usu_estado, usu_rol_id)
 			VALUES(in_usu_id,in_usu_nombre,in_usu_apellido,in_usu_email,in_usu_password,in_usu_estado,in_usu_rol);
 		WHEN 'U' THEN
 			UPDATE usu_usuarios
@@ -76,7 +79,7 @@ CREATE TABLE `rol_roles` (
 --
 
 INSERT INTO `rol_roles` (`rol_id`, `rol_nombre`, `rol_startpage`) VALUES
-(1, 'Administrador', 'administracion/usuarios'),
+(1, 'Administrador', 'usuarios'),
 (2, 'Usuario', 'home');
 
 -- --------------------------------------------------------
@@ -101,7 +104,8 @@ CREATE TABLE `usu_usuarios` (
 
 INSERT INTO `usu_usuarios` (`usu_id`, `usu_nombre`, `usu_apellido`, `usu_email`, `usu_password`, `usu_estado`, `usu_rol_id`) VALUES
 (1, 'Luis', 'Gutierrez', 'lguti_12@gmail.com', 'admin', 1, 1),
-(2, 'Maria', 'Castellanos', 'mcastellanos_23@gmail.com', '1234', 1, 2);
+(2, 'Maria', 'Castellanos', 'mcastellanos_23@gmail.com', '1234', 1, 2),
+(6, '1', '2', '3', '4', 1, 2);
 
 --
 -- Índices para tablas volcadas
@@ -127,7 +131,7 @@ ALTER TABLE `usu_usuarios`
 -- AUTO_INCREMENT de la tabla `usu_usuarios`
 --
 ALTER TABLE `usu_usuarios`
-  MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Entidad Usuario', AUTO_INCREMENT=5;
+  MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Entidad Usuario', AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -15,6 +15,13 @@ class Usuarios extends CI_Controller {
 		print_r($response);
 	}
 
+	public function roles(){
+		$datos = json_decode(file_get_contents('php://input'));
+		$result = $this->seguridad_model->roles($datos);
+		$response = json_encode($result);
+		print_r($response);
+	}
+
 	public function index(){
 		$data['data'] = $this->session->userdata();
 		$this->load->view('administracion/usuarios', $data);

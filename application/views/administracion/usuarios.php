@@ -25,7 +25,7 @@
 			<div class="container-fluid p-1">
 				<div class="row g-3 align-items-center">
 				  <div class="col-auto">
-				  	<button class="btn btn-sm btn-primary" onclick="window.home.modal(0,'block', 0)">Nuevo Usuario</button>
+				  	<button class="btn btn-sm btn-primary" onclick="window.home.create_usuario()">Nuevo Usuario</button>
 				  </div>
 				</div>
 				<hr>
@@ -51,27 +51,28 @@
 		      <div class="modal-body bg-light">
 		        	<div class="mb-3">
 					  	<label class="form-label">Nombre: </label>
-					  	<input type="email" class="form-control form-control-sm" id="nombre">
+					  	<input type="text" class="form-control form-control-sm" id="nombre" maxlength="120">
 					</div>
 		        	<div class="mb-2">
 					  	<label class="form-label">Apellido: </label>
-					  	<input type="email" class="form-control form-control-sm" id="apellido">
+					  	<input type="text" class="form-control form-control-sm" id="apellido" maxlength="120">
 					</div>
 					<div class="mb-2">
 					  	<label class="form-label">Email: </label>
-					  	<input type="email" class="form-control form-control-sm" id="email">
+					  	<input type="email" class="form-control form-control-sm" id="email" maxlength="160">
 					</div>
 					<div class="mb-2">
 					  	<label class="form-label">Password: </label>
-					  	<input type="email" class="form-control form-control-sm" id="password">
+					  	<input type="email" class="form-control form-control-sm" id="password" maxlength="180">
 					</div>
 					<div class="mb-2">
 					  	<label class="form-label">Estado: </label>
-					  	<input type="email" class="form-control form-control-sm" id="estado">
+					  	<input type="checkbox" checked id="estado">
 					</div>
 					<div class="mb-2">
 					  	<label class="form-label">Rol: </label>
-					  	<input type="email" class="form-control form-control-sm" id="rol">
+					  	<select class="form-select form-select-sm" id="select_roles">
+						</select>
 					</div>
 		      </div>
 				<ul class="list-group m-2">
@@ -83,7 +84,7 @@
 				</ul>
 		      <div class="modal-footer p-2">
 		        <button type="button" class="btn btn-sm btn-secondary" onclick="window.home.modal(0,'none', -1)">Close</button>
-		        <button type="button" class="btn btn-sm btn-primary" onclick="window.home.sender()">Aceptar</button>
+		        <button type="button" class="btn btn-sm btn-primary" onclick="window.home.validarForm_usuario()">Aceptar</button>
 		      </div>
 		    </div>
 		  </div>

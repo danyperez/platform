@@ -3,10 +3,12 @@ export class home_view{
 	constructor(){
 	}
 
-	select_alumnos(data){
+	select_roles(data){
+		let selected = '';
 		let options = `<option value="null">Seleccione una opcion</option>`;
 		for (let i in data) {
-			options += `<option value="${data[i].alm_id}">${data[i].alm_nombre}</option>`;
+			if (data[i].rol_id == '2') { selected = 'selected' }
+			options += `<option value="${data[i].rol_id}" ${selected}>${data[i].rol_nombre}</option>`;
 		}
 		return options;
 	}
@@ -48,26 +50,24 @@ export class home_view{
 
 	set_table_usuarios(dt){
 		let tbname = 'table_usuarios';
+		for (let i = 0; i < dt.length; i++) {
+			dt[i].id = (i+1);
+			dt[i].estado = (dt[i].usu_estado == 1) ? 'Activo' : 'Inactivo';
+			dt[i].acciones = `
+			  <button type="button" class="btn btn-group-sm btn-secondary p-0 mdi mdi-trash-can-outline" 
+			  onclick="window.home.delete_usuario()" data-id="${dt[i].id}">
+			  </button>`;
+		}
 		let columns = [
 	    { title: "#", data: "usu_id" },
 	    { title: "Nombre", data: "usu_nombre" },
 	    { title: "Apellido", data: "usu_apellido" },
 	    { title: "Email", data: "usu_email" },
-	    { title: "Estado", data: "usu_estado" },
+	    { title: "Estado", data: "estado" },
 	    { title: "Rol", data: "rol_nombre" },
 	    { title: "Pagina de inicio", data: "rol_startpage" },
 	    { title: "Acciones", data: "acciones" }
 		];
-		for (let i = 0; i < dt.length; i++) {
-			dt[i].id = (i+1);
-			dt[i].acciones = `
-			  <button type="button" class="btn btn-group-sm btn-secondary p-0 mdi mdi-trash-can-outline" 
-			  data-action="delete_user" data-id="${dt[i].id}">
-			  </button>
-			  <button type="button" class="btn btn-group-sm btn-primary p-0 mdi mdi-square-edit-outline" 
-			  data-action="update_user" data-id="${dt[i].id}">
-			  </button>`;
-		}
 		this.createDatatable(tbname, dt, columns);
 	}
 

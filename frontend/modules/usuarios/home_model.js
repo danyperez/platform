@@ -41,11 +41,15 @@ export class home_model{
 		return result[0];
 	}
 
-	async getUsuarios(params){
-		console.log(window.base_url);
+	async roles(params){
+		let url = window.base_url+'usuarios/roles';
+		let result = await this.transfer('json', params, url);
+		return result;
+	}
+
+	async usuarios(params){
 		let url = window.base_url+'usuarios/usuarios';
 		let result = await this.transfer('json', params, url);
-		console.log(result);
 		return result;
 	}
 
