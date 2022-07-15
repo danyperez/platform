@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Seguridad_model extends CI_Model{
 
+	public function validate_user($datos){
+    $query = $this->db->query("CALL sp_usu_validation( '$datos->email', '$datos->password' )");
+    $result = $query->result();
+		return $result;
+	}
+
 	public function usuarios($datos){
 		try {
 		    $query = $this->db->query("call sp_usu_usuarios($datos->id, '$datos->nombre', '$datos->apellido', 

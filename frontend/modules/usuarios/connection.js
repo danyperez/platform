@@ -1,8 +1,8 @@
 
-//CONTROLADOR DE LOGIN
-export class LoginModel{
-	constructor() {
-	}
+export class connections{
+   constructor() {
+   }
+
 	async transfer(format, packet, url) {
 		let res = await fetch(url, {
 					method: 'POST', mode: 'no-cors', cache: 'no-cache',
@@ -20,18 +20,8 @@ export class LoginModel{
 			return 'Error: ${res.status}';
 		}
 	}
-
-	async validate_user(){
-		console.log(window);
-		let params = {
-			// email: 'lguti_12@gmail.com',
-			// password: 'admin'
-			email: email.value.trim(),
-			password: password.value.trim()
-		};
-		let url = window.base_url+'login/iniciar_sesion';
-		let result = await this.transfer('json', params, url);
-		return result;
-	}
-
 }
+
+
+
+	 

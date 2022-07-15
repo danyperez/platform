@@ -21,9 +21,18 @@ export class Login{
       }
    }
 
-   senderData(){
-      this.loginModel.validate_user();
-      console.log('Enviando');
+   async senderData(){
+      let result = await this.loginModel.validate_user();
+      if (result.usu_logueado) {
+         this.advertices[2].style.display = 'none';
+         this.advertices[3].style.display = 'inline-block';
+         setTimeout(function() {
+            window.location.href = window.base_url+result.usu_rol_startpage;
+         }, 1200);
+      }else{
+         this.advertices[2].style.display = 'inline-block';
+         this.advertices[3].style.display = 'none';
+      }
    }
 
 
