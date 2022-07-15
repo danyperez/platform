@@ -9,6 +9,10 @@ class Seguridad_model extends CI_Model{
 		return $result;
 	}
 
+	/**
+	 * @author Daniel Perez
+	 * usuarios: Gestion entidad usuarios 
+	**/
 	public function usuarios($datos){
 		try {
 		    $query = $this->db->query("call sp_usu_usuarios($datos->id, '$datos->nombre', '$datos->apellido', 
@@ -18,6 +22,11 @@ class Seguridad_model extends CI_Model{
 		} catch (Exception $e) {
 		}
 	}
+
+	/**
+	 * @author Daniel Perez
+	 * roles: lista de roles de usuario 
+	**/
 	public function roles(){
 		$result = $this->db->get('rol_roles');
 		$this->db->where(array('rol_estado' => 1));

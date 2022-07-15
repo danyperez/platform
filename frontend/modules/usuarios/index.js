@@ -12,6 +12,10 @@ class home{
 		this.data_usuario_seleccion = {};
 	}
 	
+	/**
+	 * @author Daniel Perez
+	 * Obtiene un registro de un arreglo
+	**/
 	row_getter(dataname, id) {
 		let result = this[dataname].filter(function (el) {
 		  return el.id == id;
@@ -19,6 +23,10 @@ class home{
 		return result[0];
 	}
 
+	/**
+	 * @author Daniel Perez
+	 * Gestion de modal
+	**/
    modal(modal, display, tmp){
       let modals = document.getElementsByClassName('modalcover');
       let templates = document.getElementsByClassName('template');
@@ -29,12 +37,20 @@ class home{
       }
    }
 
+	/**
+	 * @author Daniel Perez
+	 * Muestra el grid de usuarios
+	**/
 	async set_usuarios(){
 		let params = { id: 0, nombre: 0, apellido: 0, email: 0, password: 0, rol: 0, estado: 0, bandera: 'table' };
 		this.data_usuarios = await this.Home_model.usuarios(params);
 		this.Home_view.set_table_usuarios(this.data_usuarios);
 	}
 
+	/**
+	 * @author Daniel Perez
+	 * Formulario para crear usuario
+	**/
 	async create_usuario(){
 		this.iud_usuario = 'I';
 		this.modal(0,'inline-block', 0);
@@ -42,21 +58,10 @@ class home{
 		select_roles.innerHTML = this.Home_view.select_roles(roles);
 	}
 
-	async update_usuario(dtset){
-		this.iud_usuario = 'U';
-		let row = await this.row_getter('data_usuarios', dtset.id);
-		this.data_usuario_seleccion = row;
-		await this.modal({ state: 'show', template: 'tmp_form_usuario'});
-		let grados = await this.Home_model.grados();
-		select_grados_usuario.innerHTML = this.Home_view.select_grados(grados);
-		in_nombre_usuario.value =  row.alm_nombre;
-		in_edad_usuario.value = row.alm_edad;
-		in_sexo_usuario.value = row.alm_sexo;
-		select_grados_usuario.value = row.alm_id_grd;
-		in_observacion_usuario.value = row.alm_observacion;
-		
-	}
-
+	/**
+	 * @author Daniel Perez
+	 * Accion para eliminar un usuario 
+	**/
 	async delete_usuario(){
 		this.iud_usuario = 'D';
 		let row = await this.row_getter('data_usuarios', event.target.dataset.id);
@@ -66,6 +71,10 @@ class home{
 		}
 	}
 
+	/**
+	 * @author Daniel Perez
+	 * Validacion de formulario
+	**/
 	validarForm_usuario(){
 		if (nombre.value.trim() == '') {
 			info('ingrese el nombre del usuario.');
@@ -80,6 +89,10 @@ class home{
 		}
 	}
 
+	/**
+	 * @author Daniel Perez
+	 * Acciones de usuario
+	**/
 	async IUD_usuario(){
 		let datarow;
 	   let params = { bandera: this.iud_usuario };					
