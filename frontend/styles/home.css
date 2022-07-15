@@ -1,0 +1,13 @@
+
+@import '../libraries/materialdesignicons/materialdesignicons.css';
+@import '../libraries/datatables/jquery.dataTables.min.css';
+@import '../libraries/datatables/dataTables.bootstrap4.min.css';
+@import '../libraries/datatables/responsive.bootstrap4.min.css';
+@import '../libraries/bootstrap/css/bootstrap.min.css';
+@import '../libraries/cute-alerts/cute-alert.css';
+@import '../libraries/tabs/tabs.css';
+
+body{
+	margin: 0;
+}
+

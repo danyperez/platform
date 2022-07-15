@@ -1,0 +1,62 @@
+body{
+  margin: 0;
+  background: #fff;
+  min-width: 300px;
+}
+
+/*###################   TABS    ####################*/
+.tabs-headers{
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  overflow-y: none;
+  overflow-x: none;
+  white-space: nowrap;
+  padding: 0;
+}
+
+.tab-header {
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 6px;
+  text-decoration: none;
+  border-bottom: 3px solid #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+.tab-header-active{
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: 3px solid #06f;
+  font-size: 14px;
+}
+.tab-header:hover {
+  border-bottom: 3px solid #ccc;
+}
+.tabs-headers::-webkit-scrollbar {
+  height: 4px;
+  width: 8px;
+  background: #ccc;
+  cursor: pointer;
+}
+.tabs-headers::-webkit-scrollbar-thumb {
+  background: #666a;
+  border-radius: 8px;
+  width: 2px;
+}
+.tab-body{
+  padding: 6px;
+  border: 0px solid #ccc;
+  overflow: auto;
+  display: none;
+  background: #fff;
+  min-height: 70vh;
+}
+/*
+.tab-body:nth-child(1){
+  display: block;
+}*/
